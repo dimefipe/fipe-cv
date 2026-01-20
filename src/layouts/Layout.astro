@@ -1,3 +1,12 @@
+---
+// Importar el ClientRouter de Astro para habilitar transiciones suaves entre páginas
+import { ClientRouter } from 'astro:transitions';
+// Importar los estilos globales (Tailwind CSS y Remix Icon)
+import '../assets/styles.css';
+// Importar el logo como módulo de Astro (optimizado automáticamente)
+import logo from '../assets/fipe-simbolo.webp';
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,12 +14,160 @@
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Felipe Belmar - CV</title>
+		<!-- ClientRouter habilita las View Transitions API para navegación sin recargas -->
+		<ClientRouter />
 	</head>
-	<body>
-		<slot />
+	<!--
+		transition:animate="none" - Habilita las transiciones globalmente pero sin animar el body
+		flex - Layout flexbox para alinear header y main lado a lado
+	-->
+	<body class="flex" transition:animate="none">
+        <!--
+			transition:persist - Mantiene el header fijo entre navegaciones (no se recarga)
+			z-20 - Asegura que el header esté por encima del main (para que los spans sean visibles)
+			relative - Posicionamiento relativo para que el nav absolute se posicione respecto a este
+		-->
+        <header class="relative flex flex-col bg-gray-900 text-white p-3 z-20" transition:persist>
+            <!-- Logo del sitio que enlaza a la página principal -->
+            <!-- hover:opacity-80 - Reduce opacidad al 80% en hover -->
+            <!-- self-center - Centra el logo horizontalmente en el header -->
+            <a href="/" class="hover:opacity-80 transition-opacity self-center z-10">
+                <!-- logo.src contiene la URL optimizada de la imagen -->
+                <!-- object-contain mantiene las proporciones de la imagen -->
+                <img src={logo.src} alt="Felipe Belmar" class="w-12 h-12 object-contain">
+            </a>
+
+            <!--
+				Navegación centrada absolutamente en el header
+				absolute - Posicionamiento absoluto respecto al header
+				top-1/2 left-1/2 - Posiciona en el centro exacto (50%, 50%)
+				-translate-x-1/2 -translate-y-1/2 - Ajuste para centrado perfecto (mueve -50% de su tamaño)
+			-->
+            <nav class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex">
+                <!-- gap-3 - Espacio de 12px entre cada item del menú -->
+                <ul class="flex flex-col justify-center gap-3">
+                    <li>
+                        <!--
+							nav-link - Clase personalizada para el script JavaScript
+							data-path - Atributo para identificar la ruta en JavaScript
+							group - Permite aplicar estilos a elementos hijos cuando se hace hover en el padre
+							relative - Necesario para posicionar el span absolute
+						-->
+                        <a href="/" class="nav-link flex gap-1 items-center relative group" data-path="/">
+                            <!--
+								nav-icon - Clase personalizada para el script JavaScript (cambia bg según ruta activa)
+								w-12 h-12 - Tamaño fijo de 48px x 48px (cuadrado perfecto)
+								rounded-lg - Bordes redondeados de 8px
+								transition-all duration-300 - Transición suave de 300ms para todos los cambios
+								bg-gray-800 - Color de fondo por defecto (se cambia dinámicamente con JS)
+								group-hover:bg-rose-700 - Cambia a rose-700 cuando se hace hover en el <a> padre
+							-->
+                            <div class="nav-icon w-12 h-12 rounded-lg flex justify-center items-center transition-all duration-300 bg-gray-800 group-hover:bg-rose-700">
+                                <!-- text-2xl - Tamaño del ícono de 24px -->
+                                <i class="ri-user-line text-2xl transition-colors"></i>
+                            </div>
+                            <!--
+								Etiqueta que aparece al hacer hover
+								absolute left-13 - Posicionado a 52px desde la izquierda (justo después del icono)
+								opacity-0 - Invisible por defecto
+								group-hover:opacity-90 - Se hace visible (90%) al hacer hover en el <a>
+								-translate-x-3 - Desplazado 12px a la izquierda inicialmente
+								group-hover:translate-x-1 - Se mueve 4px a la derecha al hacer hover (animación de entrada)
+							-->
+                            <span class="absolute left-13 bg-gray-700 leading-none p-1.5 px-2 rounded transition-all duration-300 opacity-0 group-hover:opacity-90 -translate-x-3 group-hover:translate-x-1">Perfil</span>
+                        </a>
+                    </li>
+
+                    <!-- Ítem de navegación: Conocimientos (mismo patrón que Perfil) -->
+                    <li>
+                        <a href="/conocimientos" class="nav-link flex gap-1 items-center relative group" data-path="/conocimientos">
+                            <div class="nav-icon w-12 h-12 rounded-lg flex justify-center items-center transition-all duration-300 bg-gray-800 group-hover:bg-rose-700">
+                                <i class="ri-book-line text-2xl transition-colors"></i>
+                            </div>
+                            <span class="absolute left-13 bg-gray-700 leading-none p-1.5 px-2 rounded transition-all duration-300 opacity-0 group-hover:opacity-90 -translate-x-3 group-hover:translate-x-1">Conocimientos</span>
+                        </a>
+                    </li>
+
+                    <!-- Ítem de navegación: Experiencia (mismo patrón que Perfil) -->
+                    <li>
+                        <a href="/experiencia" class="nav-link flex gap-1 items-center relative group" data-path="/experiencia">
+                            <div class="nav-icon w-12 h-12 rounded-lg flex justify-center items-center transition-all duration-300 bg-gray-800 group-hover:bg-rose-700">
+                                <i class="ri-briefcase-line text-2xl transition-colors"></i>
+                            </div>
+                            <span class="absolute left-13 bg-gray-700 leading-none p-1.5 px-2 rounded transition-all duration-300 opacity-0 group-hover:opacity-90 -translate-x-3 group-hover:translate-x-1">Experiencia</span>
+                        </a>
+                    </li>
+
+                    <!-- Ítem de navegación: Contacto (mismo patrón que Perfil) -->
+                    <li>
+                        <a href="/contacto" class="nav-link flex gap-1 items-center relative group" data-path="/contacto">
+                            <div class="nav-icon w-12 h-12 rounded-lg flex justify-center items-center transition-all duration-300 bg-gray-800 group-hover:bg-rose-700">
+                                <i class="ri-mail-line text-2xl transition-colors"></i>
+                            </div>
+                            <span class="absolute left-13 bg-gray-700 leading-none p-1.5 px-2 rounded transition-all duration-300 opacity-0 group-hover:opacity-90 -translate-x-3 group-hover:translate-x-1">Contacto</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+		<!--
+			Contenedor principal donde se inyecta el contenido de cada página
+			flex-grow - Ocupa todo el espacio disponible horizontalmente
+			z-10 - Por debajo del header (z-20) para que los spans sean visibles
+			transition:animate="fade" - Anima el contenido con efecto de desvanecimiento al cambiar de página
+		-->
+		<main class="bg-gray-800 min-h-100vh flex-grow text-white p-8 z-10" transition:animate="fade">
+			<!-- slot - Aquí se inyecta el contenido de cada página individual -->
+            <slot />
+        </main>
 	</body>
 </html>
+
+<!--
+	Script del lado del cliente para manejar el estado activo de la navegación
+	Se ejecuta en el navegador y se mantiene después de las transiciones
+-->
+<script>
+	/**
+	 * Actualiza el estado visual activo de los enlaces de navegación
+	 * según la ruta actual del navegador
+	 */
+	function updateActiveNav() {
+		// Obtener la ruta actual desde la URL del navegador
+		const currentPath = window.location.pathname;
+
+		// Seleccionar todos los enlaces de navegación con clase 'nav-link'
+		const navLinks = document.querySelectorAll('.nav-link');
+
+		// Iterar sobre cada enlace
+		navLinks.forEach(link => {
+			// Obtener la ruta asociada al enlace desde el atributo data-path
+			const linkPath = link.getAttribute('data-path');
+
+			// Obtener el elemento del ícono dentro del enlace
+			const icon = link.querySelector('.nav-icon');
+
+			// Si la ruta del enlace coincide con la ruta actual
+			if (linkPath === currentPath) {
+				// Remover el color gris y agregar el color rosa (activo)
+				icon?.classList.remove('bg-gray-800');
+				icon?.classList.add('bg-rose-500');
+			} else {
+				// Si no coincide, mantener el color gris (inactivo)
+				icon?.classList.remove('bg-rose-500');
+				icon?.classList.add('bg-gray-800');
+			}
+		});
+	}
+
+	// Ejecutar la función al cargar la página por primera vez
+	updateActiveNav();
+
+	// Escuchar el evento 'astro:page-load' que se dispara después de cada transición
+	// Esto asegura que el estado activo se actualice después de navegar
+	document.addEventListener('astro:page-load', updateActiveNav);
+</script>
 
 <style>
 	html,

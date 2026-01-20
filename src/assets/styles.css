@@ -1,0 +1,17 @@
+/**
+ * Archivo de estilos globales
+ * Se importa una vez en Layout.astro y se aplica a todo el sitio
+ */
+
+/**
+ * Importar Tailwind CSS v4
+ * En la v4, Tailwind se configura directamente en CSS usando @import
+ * Esto reemplaza el antiguo @tailwind base, components, utilities
+ */
+@import "tailwindcss";
+
+/**
+ * Importar los estilos de Remix Icon
+ * Esto carga las fuentes de iconos para poder usar clases como ri-user-line, ri-book-line, etc.
+ */
+@import "remixicon/fonts/remixicon.css";
