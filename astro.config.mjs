@@ -4,7 +4,10 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
+const base = process.env.ASTRO_BASE ?? '/';
+
 export default defineConfig({
+  base,
   // Configuración experimental de Astro
   experimental: {
     // Habilita el pre-renderizado del lado del cliente para transiciones más suaves
