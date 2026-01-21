@@ -6,7 +6,7 @@
 export const perfilProfesional = {
   titulo: "Perfil profesional",
   nombre: "Felipe Belmar",
-  etiquetas: ["Desarrollador en formación", "Estudiante autodidacta"],
+  etiquetas: ["Desarrollador en formación"],
   descripcion:
     "Desarrollador web en formación con conocimientos fundamentales en HTML, CSS y JavaScript. Apasionado por aprender y aplicar nuevas tecnologías. Busco mi primera oportunidad profesional para crecer en el desarrollo web mientras contribuyo con dedicación y ganas de aprender.",
   imagen: "/src/assets/fipe.jpg",

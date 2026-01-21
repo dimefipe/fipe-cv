@@ -13,7 +13,7 @@ trabajos:
   - cargo: "Profesor de Maquetado Web"
     empresa: "Santo Tomás · Diseño Publicitario"
     modalidad: "Docencia"
-    periodo: "Actual"
+    periodo: ""
     responsabilidades:
       - "Clases de HTML y CSS orientadas a buenas prácticas de maquetado."
       - "Guía y revisión de proyectos académicos (landings y portafolios)."
