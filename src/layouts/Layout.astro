@@ -25,7 +25,7 @@ import favicon from '../assets/favicon.png';
 		flex - Layout flexbox para alinear header y main lado a lado
 	-->
 	<body class="flex flex-col md:flex-row" transition:animate="none">
-        <div class="fixed top-0 left-0 right-0 z-30 flex items-center justify-center bg-gray-900/95 py-3 backdrop-blur md:hidden">
+        <div class="fixed top-0 left-0 right-0 z-30 flex items-center justify-center bg-gray-900/95 py-3 backdrop-blur md:hidden" transition:persist transition:animate="none">
             <a href="/" class="inline-flex items-center justify-center">
                 <img src={logoHorizontal.src} alt="Felipe Belmar" class="h-6 w-auto">
             </a>
@@ -35,7 +35,7 @@ import favicon from '../assets/favicon.png';
 			z-20 - Asegura que el header estÃ© por encima del main (para que los spans sean visibles)
 			relative - Posicionamiento relativo para que el nav absolute se posicione respecto a este
 		-->
-        <header class="fixed bottom-0 left-0 right-0 z-20 flex items-center justify-between border-t border-gray-800 bg-gray-900/95 p-2 text-white backdrop-blur md:static md:relative md:flex-col md:justify-start md:border-t-0 md:bg-gray-900 md:p-3" transition:persist>
+        <header class="fixed bottom-0 left-0 right-0 z-20 flex items-center justify-between border-t border-gray-800 bg-gray-900/95 p-2 text-white backdrop-blur md:static md:relative md:flex-col md:justify-start md:border-t-0 md:bg-gray-900 md:p-3" transition:persist transition:animate="none">
             
             <a href="/" class="hidden self-center transition-opacity hover:opacity-80 md:block md:z-10">
                 <img src={logo.src} alt="Felipe Belmar" class="w-12 h-12 object-contain">
@@ -107,12 +107,18 @@ import favicon from '../assets/favicon.png';
 	let centerObserver;
 	let isCentered = null;
 
+	function normalizePath(pathname) {
+		const clean = pathname.split('?')[0]?.split('#')[0] ?? '';
+		const trimmed = clean.replace(/\/+$/, '');
+		return trimmed || '/';
+	}
+
 	function updateActiveNav() {
-		const currentPath = window.location.pathname;
+		const currentPath = normalizePath(window.location.pathname);
 		const navLinks = document.querySelectorAll('.nav-link');
 
 		navLinks.forEach(link => {
-			const linkPath = link.getAttribute('data-path');
+			const linkPath = normalizePath(link.getAttribute('data-path') ?? '/');
 			const icon = link.querySelector('.nav-icon');
 
 			if (linkPath === currentPath) {
@@ -190,6 +196,7 @@ import favicon from '../assets/favicon.png';
 
 	handlePageLoad();
 	document.addEventListener('astro:page-load', handlePageLoad);
+	document.addEventListener('astro:after-swap', updateActiveNav);
 	window.addEventListener('resize', updateCentering);
 </script>
 

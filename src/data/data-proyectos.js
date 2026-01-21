@@ -3,6 +3,10 @@
  * Este archivo usa JavaScript para mostrar cómo exportar objetos y arrays.
  */
 
+import reservaImage from '../assets/reserva.webp';
+import ticsurImage from '../assets/ticsur.webp';
+import mieunacomImage from '../assets/mieunacom.webp';
+
 export const proyectosSection = {
   kicker: "Conocimientos aplicados",
   title: "Proyectos que respaldan mi experiencia",
@@ -18,7 +22,7 @@ export const proyectos = [
     title: "Reserva Médica",
     description:
       "Maquetado UI para un sistema de reservas médicas que estaba desarrollando otro equipo en MDTech. Se implementó como un plugin dentro del producto principal, asegurando consistencia visual y claridad en el flujo de formularios.",
-    image: "/src/assets/reserva.webp",
+    image: reservaImage,
     link: "https://reserva-medica.netlify.app/",
     tech: [
       { label: "HTML", icon: "ri-html5-line" },
@@ -37,7 +41,7 @@ export const proyectos = [
     title: "Ticsur",
     description:
       "Sitio de la primera edición del evento TI tipo hackathon de Santo Tomás, auspiciado por Ticsur. La propuesta comunica agenda, speakers y convocatoria con foco en inscripción y difusión.",
-    image: "/src/assets/ticsur.webp",
+    image: ticsurImage,
     link: "https://ticsur.netlify.app/",
     tech: [
       { label: "HTML", icon: "ri-html5-line" },
@@ -56,7 +60,7 @@ export const proyectos = [
     title: "Mieunacom",
     description:
       "SaaS de preparación EUNACOM donde reformulé la UI y realicé la maquetación completa del landing de ventas. Se optimizó la jerarquía visual, los CTA y la narrativa de valor.",
-    image: "/src/assets/mieunacom.webp",
+    image: mieunacomImage,
     link: "https://mieunacom.netlify.app/",
     tech: [
       { label: "HTML", icon: "ri-html5-line" },

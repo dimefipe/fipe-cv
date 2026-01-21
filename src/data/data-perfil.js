@@ -3,13 +3,15 @@
  * Útil para mostrar cómo importar y reutilizar data en Astro.
  */
 
+import perfilImagen from '../assets/fipe.jpg';
+
 export const perfilProfesional = {
   titulo: "Perfil profesional",
   nombre: "Felipe Belmar",
   etiquetas: ["Desarrollador en formación"],
   descripcion:
     "Desarrollador web en formación con conocimientos fundamentales en HTML, CSS y JavaScript. Apasionado por aprender y aplicar nuevas tecnologías. Busco mi primera oportunidad profesional para crecer en el desarrollo web mientras contribuyo con dedicación y ganas de aprender.",
-  imagen: "/src/assets/fipe.jpg",
+  imagen: perfilImagen,
   imagenAlt: "Felipe Belmar",
   badge: "UI / Web",
   cta: {
