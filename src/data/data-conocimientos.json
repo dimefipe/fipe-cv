@@ -1,0 +1,30 @@
+{
+  "titulo": "CONOCIMIENTOS GENERALES",
+  "emoji": "🛠️",
+  "secciones": [
+    {
+      "nombre": "Tecnologías Web",
+      "items": [
+        "HTML5",
+        "CSS3",
+        "JavaScript (nociones generales)"
+      ]
+    },
+    {
+      "nombre": "Conceptos",
+      "items": [
+        "Estructura básica de interfaces web",
+        "Separación entre contenido, estilos y comportamiento",
+        "Maquetación responsive básica",
+        "Comprensión general del flujo de una aplicación web"
+      ]
+    },
+    {
+      "nombre": "Herramientas",
+      "items": [
+        "Git (uso inicial)",
+        "Entornos de desarrollo locales"
+      ]
+    }
+  ]
+}

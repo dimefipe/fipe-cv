@@ -1,1 +1,51 @@
-<h1 class="text-5xl">Conocimientos</h1>
+---
+/**
+ * EJEMPLO 2: Destructuring avanzado desde archivo JSON (.json)
+ * Importamos el objeto JSON y extraemos sus propiedades directamente
+ * Los archivos JSON son útiles para datos estructurados y validación
+ *
+ * ARCHIVO DE DATOS: src/data/data-conocimientos.json
+ */
+import conocimientos from '../data/data-conocimientos.json';
+
+// Destructuring del objeto importado
+const { titulo, emoji, secciones } = conocimientos;
+
+// Podemos hacer transformaciones o cálculos con los datos
+const totalItems = secciones.reduce((acc, seccion) => acc + seccion.items.length, 0);
+---
+
+<div class="max-w-4xl px-4 sm:px-6 lg:px-8">
+    <!-- Título de la sección usando variables destructuradas -->
+    <h1 class="text-4xl font-bold mb-8 flex items-center gap-3">
+        <span>{emoji}</span>
+        <span>{titulo}</span>
+    </h1>
+
+    <!-- Mostrar el total de items calculado -->
+    <p class="text-gray-400 mb-6">
+        Total de conocimientos: <span class="text-rose-400 font-semibold">{totalItems}</span>
+    </p>
+
+    <!-- Iterar sobre cada subsección usando la variable destructurada -->
+    <div class="space-y-8">
+        {secciones.map((seccion) => (
+            <div class="bg-gray-700 bg-opacity-50 rounded-lg p-6">
+                <!-- Nombre de la subsección -->
+                <h2 class="text-2xl font-semibold mb-4 text-rose-400">
+                    {seccion.nombre}
+                </h2>
+
+                <!-- Lista de items -->
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {seccion.items.map((item) => (
+                        <li class="flex items-center gap-2">
+                            <span class="text-rose-500">✓</span>
+                            <span class="text-gray-300">{item}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        ))}
+    </div>
+</div>

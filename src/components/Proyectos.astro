@@ -1,0 +1,265 @@
+---
+const projects = [
+  {
+    title: "Reserva Médica",
+    description:
+      "Maquetado UI para un sistema de reservas médicas que estaba desarrollando otro equipo en MDTech. Se implementó como un plugin dentro del producto principal, asegurando consistencia visual y claridad en el flujo de formularios.",
+    image: "/src/assets/reserva.webp",
+    link: "https://reserva-medica.netlify.app/",
+    tech: [
+      { label: "HTML", icon: "ri-html5-line" },
+      { label: "BEM", icon: "ri-brackets-line" },
+      { label: "CSS", icon: "ri-css3-line" },
+      { label: "JavaScript", icon: "ri-javascript-line" },
+    ],
+    skills: [
+      "Maquetado modular con metodología BEM.",
+      "Estructura de formularios para reservas y datos clínicos.",
+      "Estilos responsivos para paneles y pasos guiados.",
+      "Integración visual de un plugin en un producto existente.",
+    ],
+  },
+  {
+    title: "Ticsur",
+    description:
+      "Sitio de la primera edición del evento TI tipo hackathon de Santo Tomás, auspiciado por Ticsur. La propuesta comunica agenda, speakers y convocatoria con foco en inscripción y difusión.",
+    image: "/src/assets/ticsur.webp",
+    link: "https://ticsur.netlify.app/",
+    tech: [
+      { label: "HTML", icon: "ri-html5-line" },
+      { label: "BEM", icon: "ri-brackets-line" },
+      { label: "CSS", icon: "ri-css3-line" },
+      { label: "JavaScript", icon: "ri-javascript-line" },
+    ],
+    skills: [
+      "Landing enfocada en comunicación de eventos TI.",
+      "Jerarquía visual para agenda, speakers y sponsors.",
+      "Componentes reutilizables para secciones informativas.",
+      "Maquetado responsive para difusión móvil.",
+    ],
+  },
+  {
+    title: "Mieunacom",
+    description:
+      "SaaS de preparación EUNACOM donde reformulé la UI y realicé la maquetación completa del landing de ventas. Se optimizó la jerarquía visual, los CTA y la narrativa de valor.",
+    image: "/src/assets/mieunacom.webp",
+    link: "https://mieunacom.netlify.app/",
+    tech: [
+      { label: "HTML", icon: "ri-html5-line" },
+      { label: "BEM", icon: "ri-brackets-line" },
+      { label: "CSS", icon: "ri-css3-line" },
+      { label: "JavaScript", icon: "ri-javascript-line" },
+    ],
+    skills: [
+      "Reformulación de UI y estructura de secciones.",
+      "Optimización de CTA y mensajes de conversión.",
+      "Maquetado web completo del landing de ventas.",
+      "Consistencia visual entre hero, planes y testimonios.",
+    ],
+  },
+];
+
+const technicalSkills = {
+  base: [
+    { label: "HTML", icon: "ri-html5-line" },
+    { label: "CSS", icon: "ri-css3-line" },
+    { label: "JavaScript", icon: "ri-javascript-line" },
+    { label: "Figma", icon: "ri-figma-line" },
+    { label: "Git", icon: "ri-git-branch-line" },
+  ],
+  learning: [
+    { label: "Vue", icon: "ri-vuejs-line" },
+    { label: "Tailwind", icon: "ri-tailwind-css-line" },
+    { label: "Astro", icon: "ri-planet-line" },
+    { label: "Laravel", icon: "ri-leaf-line" },
+  ],
+};
+
+const knowledgeSummary = [
+  {
+    title: "Maquetación UI orientada a negocio",
+    detail:
+      "Transformo requerimientos en interfaces claras y escalables, cuidando jerarquía visual y consistencia.",
+    icon: "ri-layout-masonry-line",
+  },
+  {
+    title: "Metodologías de estilo",
+    detail:
+      "Trabajo con BEM y sistemas de clases para mantener el CSS ordenado y fácil de mantener.",
+    icon: "ri-palette-line",
+  },
+  {
+    title: "Responsive y accesibilidad básica",
+    detail:
+      "Diseños preparados para mobile-first, con foco en legibilidad y navegación fluida.",
+    icon: "ri-device-line",
+  },
+  {
+    title: "Interacción con JavaScript",
+    detail:
+      "Aplico JS para microinteracciones, estados visibles y mejoras de experiencia.",
+    icon: "ri-code-s-slash-line",
+  },
+];
+---
+
+<section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+  <header class="text-center mb-14">
+    <p class="text-xs sm:text-sm uppercase tracking-[0.35em] text-rose-300/80">
+      Conocimientos aplicados
+    </p>
+    <h2 class="text-4xl sm:text-5xl font-bold mt-3">
+      Proyectos que respaldan mi experiencia
+    </h2>
+    <p class="mt-4 text-slate-300 max-w-2xl mx-auto">
+      Cada proyecto refleja mi trabajo en maquetado UI con HTML, metodología BEM,
+      CSS y JavaScript. Aquí priorizo claridad visual, estructura y entrega de
+      valor desde la interfaz.
+    </p>
+  </header>
+
+  <div class="space-y-12">
+    {projects.map(project => (
+      <article class="relative overflow-hidden rounded-2xl border border-slate-700/50 bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-slate-800/80 shadow-xl">
+        <div class="grid min-w-0 gap-8 p-6 sm:p-8 lg:grid-cols-[1.05fr_1.35fr]">
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative min-w-0 overflow-hidden rounded-xl ring-1 ring-slate-700/60"
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <span class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></span>
+            <span class="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-slate-900/80 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-rose-200">
+              <i class="ri-live-line text-base"></i>
+              Demo en vivo
+            </span>
+          </a>
+
+          <div class="flex min-w-0 flex-col">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <h3 class="text-3xl font-semibold">{project.title}</h3>
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 rounded-full border border-rose-400/40 px-4 py-2 text-sm font-semibold text-rose-200 transition-colors duration-300 hover:border-rose-300 hover:text-white"
+              >
+                Ver demo
+                <i class="ri-external-link-line text-base"></i>
+              </a>
+            </div>
+
+            <p class="mt-4 text-slate-300 leading-relaxed break-words">
+              {project.description}
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-2">
+              {project.tech.map(tech => (
+                <span class="inline-flex items-center gap-2 rounded-full bg-slate-800/80 px-3 py-1 text-sm text-slate-200 ring-1 ring-slate-700/60">
+                  <i class={tech.icon}></i>
+                  {tech.label}
+                </span>
+              ))}
+            </div>
+
+            <div class="mt-6">
+              <p class="text-xs uppercase tracking-[0.3em] text-rose-300/80">
+                Conocimientos aplicados
+              </p>
+              <ul class="mt-4 grid gap-3 text-sm text-slate-300 sm:grid-cols-2">
+                {project.skills.map(skill => (
+                  <li class="flex min-w-0 items-start gap-2">
+                    <i class="ri-check-line mt-0.5 text-rose-400"></i>
+                    <span class="break-words">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="mt-16 rounded-2xl border border-slate-700/60 bg-slate-900/80 p-6 sm:p-10">
+    <div class="flex flex-wrap items-center gap-3">
+      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-rose-500/15 text-rose-300">
+        <i class="ri-stack-line text-xl"></i>
+      </div>
+      <h3 class="text-2xl font-semibold">Habilidades técnicas</h3>
+    </div>
+    <p class="mt-3 max-w-3xl text-slate-300 text-sm sm:text-base">
+      Identifico las tecnologías que domino y las que estoy estudiando, sin
+      porcentajes. El foco está en la claridad del stack que manejo hoy y el que
+      estoy consolidando.
+    </p>
+
+    <div class="mt-6 grid gap-5 lg:grid-cols-2">
+      <div class="rounded-xl border border-slate-800/70 bg-slate-950/50 p-4 sm:p-5">
+        <div class="flex items-center justify-between gap-3">
+          <h4 class="text-base font-semibold">Dominio actual</h4>
+          <span class="rounded-full bg-rose-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-rose-200">
+            Base
+          </span>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {technicalSkills.base.map(skill => (
+            <span class="inline-flex items-center gap-2 rounded-full border border-rose-400/40 bg-slate-900/60 px-3 py-2 text-xs sm:text-sm text-rose-100">
+              <i class={skill.icon}></i>
+              {skill.label}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div class="rounded-xl border border-slate-800/70 bg-slate-950/50 p-4 sm:p-5">
+        <div class="flex items-center justify-between gap-3">
+          <h4 class="text-base font-semibold">En estudio</h4>
+          <span class="rounded-full bg-sky-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-sky-200">
+            En progreso
+          </span>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2">
+          {technicalSkills.learning.map(skill => (
+            <span class="inline-flex items-center gap-2 rounded-full border border-sky-400/40 bg-slate-900/60 px-3 py-2 text-xs sm:text-sm text-slate-100">
+              <i class={skill.icon}></i>
+              {skill.label}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-10 rounded-2xl border border-slate-700/60 bg-slate-900/80 p-6 sm:p-10">
+    <div class="flex flex-wrap items-center gap-3">
+      <div class="flex h-11 w-11 items-center justify-center rounded-full bg-rose-500/15 text-rose-300">
+        <i class="ri-compass-3-line text-xl"></i>
+      </div>
+      <h3 class="text-2xl font-semibold">Conocimientos generales</h3>
+    </div>
+    <p class="mt-3 max-w-3xl text-slate-300 text-sm sm:text-base">
+      Además de los proyectos, mantengo un enfoque consistente en calidad de
+      maquetado, orden visual y colaboración con equipos de producto y desarrollo.
+    </p>
+
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      {knowledgeSummary.map(item => (
+        <div class="flex gap-3 rounded-xl border border-slate-800/70 bg-slate-950/50 p-4">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-rose-500/15 text-rose-200">
+            <i class={item.icon}></i>
+          </div>
+          <div>
+            <h4 class="text-base font-semibold">{item.title}</h4>
+            <p class="text-xs sm:text-sm text-slate-300">{item.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

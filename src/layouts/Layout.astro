@@ -1,10 +1,12 @@
----
-// Importar el ClientRouter de Astro para habilitar transiciones suaves entre páginas
+﻿---
+// Importar el ClientRouter de Astro para habilitar transiciones suaves entre pÃ¡ginas
 import { ClientRouter } from 'astro:transitions';
 // Importar los estilos globales (Tailwind CSS y Remix Icon)
 import '../assets/styles.css';
-// Importar el logo como módulo de Astro (optimizado automáticamente)
+// Importar el logo como mÃ³dulo de Astro (optimizado automÃ¡ticamente)
 import logo from '../assets/fipe-simbolo.webp';
+import logoHorizontal from '../assets/fipe-horizontal.png';
+import favicon from '../assets/favicon.png';
 ---
 
 <!doctype html>
@@ -12,161 +14,183 @@ import logo from '../assets/fipe-simbolo.webp';
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href={favicon.src} />
 		<meta name="generator" content={Astro.generator} />
 		<title>Felipe Belmar - CV</title>
-		<!-- ClientRouter habilita las View Transitions API para navegación sin recargas -->
+		<!-- ClientRouter habilita las View Transitions API para navegaciÃ³n sin recargas -->
 		<ClientRouter />
 	</head>
 	<!--
 		transition:animate="none" - Habilita las transiciones globalmente pero sin animar el body
 		flex - Layout flexbox para alinear header y main lado a lado
 	-->
-	<body class="flex" transition:animate="none">
+	<body class="flex flex-col md:flex-row" transition:animate="none">
+        <div class="fixed top-0 left-0 right-0 z-30 flex items-center justify-center bg-gray-900/95 py-3 backdrop-blur md:hidden">
+            <a href="/" class="inline-flex items-center justify-center">
+                <img src={logoHorizontal.src} alt="Felipe Belmar" class="h-6 w-auto">
+            </a>
+        </div>
         <!--
 			transition:persist - Mantiene el header fijo entre navegaciones (no se recarga)
-			z-20 - Asegura que el header esté por encima del main (para que los spans sean visibles)
+			z-20 - Asegura que el header estÃ© por encima del main (para que los spans sean visibles)
 			relative - Posicionamiento relativo para que el nav absolute se posicione respecto a este
 		-->
-        <header class="relative flex flex-col bg-gray-900 text-white p-3 z-20" transition:persist>
-            <!-- Logo del sitio que enlaza a la página principal -->
-            <!-- hover:opacity-80 - Reduce opacidad al 80% en hover -->
-            <!-- self-center - Centra el logo horizontalmente en el header -->
-            <a href="/" class="hover:opacity-80 transition-opacity self-center z-10">
-                <!-- logo.src contiene la URL optimizada de la imagen -->
-                <!-- object-contain mantiene las proporciones de la imagen -->
+        <header class="fixed bottom-0 left-0 right-0 z-20 flex items-center justify-between border-t border-gray-800 bg-gray-900/95 p-2 text-white backdrop-blur md:static md:relative md:flex-col md:justify-start md:border-t-0 md:bg-gray-900 md:p-3" transition:persist>
+            
+            <a href="/" class="hidden self-center transition-opacity hover:opacity-80 md:block md:z-10">
                 <img src={logo.src} alt="Felipe Belmar" class="w-12 h-12 object-contain">
             </a>
 
-            <!--
-				Navegación centrada absolutamente en el header
-				absolute - Posicionamiento absoluto respecto al header
-				top-1/2 left-1/2 - Posiciona en el centro exacto (50%, 50%)
-				-translate-x-1/2 -translate-y-1/2 - Ajuste para centrado perfecto (mueve -50% de su tamaño)
-			-->
-            <nav class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex">
-                <!-- gap-3 - Espacio de 12px entre cada item del menú -->
-                <ul class="flex flex-col justify-center gap-3">
-                    <li>
-                        <!--
-							nav-link - Clase personalizada para el script JavaScript
-							data-path - Atributo para identificar la ruta en JavaScript
-							group - Permite aplicar estilos a elementos hijos cuando se hace hover en el padre
-							relative - Necesario para posicionar el span absolute
-						-->
-                        <a href="/" class="nav-link flex gap-1 items-center relative group" data-path="/">
-                            <!--
-								nav-icon - Clase personalizada para el script JavaScript (cambia bg según ruta activa)
-								w-12 h-12 - Tamaño fijo de 48px x 48px (cuadrado perfecto)
-								rounded-lg - Bordes redondeados de 8px
-								transition-all duration-300 - Transición suave de 300ms para todos los cambios
-								bg-gray-800 - Color de fondo por defecto (se cambia dinámicamente con JS)
-								group-hover:bg-rose-700 - Cambia a rose-700 cuando se hace hover en el <a> padre
-							-->
-                            <div class="nav-icon w-12 h-12 rounded-lg flex justify-center items-center transition-all duration-300 bg-gray-800 group-hover:bg-rose-700">
-                                <!-- text-2xl - Tamaño del ícono de 24px -->
+            <nav class="flex w-full md:absolute md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+                <ul class="flex w-full items-center justify-between gap-2 md:flex-col md:justify-center md:gap-3">
+                    <li class="flex-1 md:flex-none">
+                        <a href="/" class="nav-link relative flex flex-col items-center gap-1 group md:flex-row" data-path="/">
+                            <div class="nav-icon flex h-11 w-11 items-center justify-center rounded-2xl bg-gray-800 transition-all duration-300 group-hover:bg-rose-700 md:h-12 md:w-12 md:rounded-lg">
                                 <i class="ri-user-line text-2xl transition-colors"></i>
                             </div>
-                            <!--
-								Etiqueta que aparece al hacer hover
-								absolute left-13 - Posicionado a 52px desde la izquierda (justo después del icono)
-								opacity-0 - Invisible por defecto
-								group-hover:opacity-90 - Se hace visible (90%) al hacer hover en el <a>
-								-translate-x-3 - Desplazado 12px a la izquierda inicialmente
-								group-hover:translate-x-1 - Se mueve 4px a la derecha al hacer hover (animación de entrada)
-							-->
-                            <span class="absolute left-13 bg-gray-700 leading-none p-1.5 px-2 rounded transition-all duration-300 opacity-0 group-hover:opacity-90 -translate-x-3 group-hover:translate-x-1">Perfil</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-slate-300 md:hidden">Perfil</span>
+                            <span class="absolute left-13 hidden rounded bg-gray-700 leading-none p-1.5 px-2 opacity-0 transition-all duration-300 -translate-x-3 group-hover:opacity-90 group-hover:translate-x-1 md:block">Perfil</span>
                         </a>
                     </li>
-
-                    <!-- Ítem de navegación: Conocimientos (mismo patrón que Perfil) -->
-                    <li>
-                        <a href="/conocimientos" class="nav-link flex gap-1 items-center relative group" data-path="/conocimientos">
-                            <div class="nav-icon w-12 h-12 rounded-lg flex justify-center items-center transition-all duration-300 bg-gray-800 group-hover:bg-rose-700">
+                    <li class="flex-1 md:flex-none">
+                        <a href="/conocimientos" class="nav-link relative flex flex-col items-center gap-1 group md:flex-row" data-path="/conocimientos">
+                            <div class="nav-icon flex h-11 w-11 items-center justify-center rounded-2xl bg-gray-800 transition-all duration-300 group-hover:bg-rose-700 md:h-12 md:w-12 md:rounded-lg">
                                 <i class="ri-book-line text-2xl transition-colors"></i>
                             </div>
-                            <span class="absolute left-13 bg-gray-700 leading-none p-1.5 px-2 rounded transition-all duration-300 opacity-0 group-hover:opacity-90 -translate-x-3 group-hover:translate-x-1">Conocimientos</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-slate-300 md:hidden">Conoc.</span>
+                            <span class="absolute left-13 hidden rounded bg-gray-700 leading-none p-1.5 px-2 opacity-0 transition-all duration-300 -translate-x-3 group-hover:opacity-90 group-hover:translate-x-1 md:block">Conocimientos</span>
                         </a>
                     </li>
-
-                    <!-- Ítem de navegación: Experiencia (mismo patrón que Perfil) -->
-                    <li>
-                        <a href="/experiencia" class="nav-link flex gap-1 items-center relative group" data-path="/experiencia">
-                            <div class="nav-icon w-12 h-12 rounded-lg flex justify-center items-center transition-all duration-300 bg-gray-800 group-hover:bg-rose-700">
-                                <i class="ri-briefcase-line text-2xl transition-colors"></i>
+                    <li class="flex-1 md:flex-none">
+                        <a href="/experiencia" class="nav-link relative flex flex-col items-center gap-1 group md:flex-row" data-path="/experiencia">
+                            <div class="nav-icon flex h-11 w-11 items-center justify-center rounded-2xl bg-gray-800 transition-all duration-300 group-hover:bg-rose-700 md:h-12 md:w-12 md:rounded-lg">
+                                <i class="ri-briefcase-4-line text-2xl transition-colors"></i>
                             </div>
-                            <span class="absolute left-13 bg-gray-700 leading-none p-1.5 px-2 rounded transition-all duration-300 opacity-0 group-hover:opacity-90 -translate-x-3 group-hover:translate-x-1">Experiencia</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-slate-300 md:hidden">Exper.</span>
+                            <span class="absolute left-13 hidden rounded bg-gray-700 leading-none p-1.5 px-2 opacity-0 transition-all duration-300 -translate-x-3 group-hover:opacity-90 group-hover:translate-x-1 md:block">Experiencia</span>
                         </a>
                     </li>
-
-                    <!-- Ítem de navegación: Contacto (mismo patrón que Perfil) -->
-                    <li>
-                        <a href="/contacto" class="nav-link flex gap-1 items-center relative group" data-path="/contacto">
-                            <div class="nav-icon w-12 h-12 rounded-lg flex justify-center items-center transition-all duration-300 bg-gray-800 group-hover:bg-rose-700">
-                                <i class="ri-mail-line text-2xl transition-colors"></i>
+                    <li class="flex-1 md:flex-none">
+                        <a href="/contacto" class="nav-link relative flex flex-col items-center gap-1 group md:flex-row" data-path="/contacto">
+                            <div class="nav-icon flex h-11 w-11 items-center justify-center rounded-2xl bg-gray-800 transition-all duration-300 group-hover:bg-rose-700 md:h-12 md:w-12 md:rounded-lg">
+                                <i class="ri-mail-open-line text-2xl transition-colors"></i>
                             </div>
-                            <span class="absolute left-13 bg-gray-700 leading-none p-1.5 px-2 rounded transition-all duration-300 opacity-0 group-hover:opacity-90 -translate-x-3 group-hover:translate-x-1">Contacto</span>
+                            <span class="text-[10px] uppercase tracking-[0.2em] text-slate-300 md:hidden">Contacto</span>
+                            <span class="absolute left-13 hidden rounded bg-gray-700 leading-none p-1.5 px-2 opacity-0 transition-all duration-300 -translate-x-3 group-hover:opacity-90 group-hover:translate-x-1 md:block">Contacto</span>
                         </a>
                     </li>
                 </ul>
             </nav>
         </header>
 		<!--
-			Contenedor principal donde se inyecta el contenido de cada página
+			Contenedor principal donde se inyecta el contenido de cada pÃ¡gina
 			flex-grow - Ocupa todo el espacio disponible horizontalmente
 			z-10 - Por debajo del header (z-20) para que los spans sean visibles
-			transition:animate="fade" - Anima el contenido con efecto de desvanecimiento al cambiar de página
+			transition:animate="fade" - Anima el contenido con efecto de desvanecimiento al cambiar de pÃ¡gina
+			overflow-auto - Permite scroll si el contenido es muy largo
 		-->
-		<main class="bg-gray-800 min-h-100vh flex-grow text-white p-8 z-10" transition:animate="fade">
-			<!-- slot - Aquí se inyecta el contenido de cada página individual -->
-            <slot />
+		<main class="bg-gray-800 min-h-dvh flex-grow text-white pt-16 pb-24 md:pt-8 md:pb-8 z-10 overflow-y-auto" transition:animate="fade">
+			<!-- Contenedor centrado con ancho mÃ¡ximo para evitar desbordamiento -->
+			<div class="max-w-5xl mx-auto w-full" data-page-wrap>
+				<!-- slot - AquÃ­ se inyecta el contenido de cada pÃ¡gina individual -->
+				<slot />
+			</div>
         </main>
 	</body>
 </html>
 
 <!--
-	Script del lado del cliente para manejar el estado activo de la navegación
-	Se ejecuta en el navegador y se mantiene después de las transiciones
+	Script del lado del cliente para manejar el estado activo de la navegaciÃ³n
+	Se ejecuta en el navegador y se mantiene despuÃ©s de las transiciones
 -->
 <script>
-	/**
-	 * Actualiza el estado visual activo de los enlaces de navegación
-	 * según la ruta actual del navegador
-	 */
-	function updateActiveNav() {
-		// Obtener la ruta actual desde la URL del navegador
-		const currentPath = window.location.pathname;
+	let centerObserver;
+	let isCentered = null;
 
-		// Seleccionar todos los enlaces de navegación con clase 'nav-link'
+	function updateActiveNav() {
+		const currentPath = window.location.pathname;
 		const navLinks = document.querySelectorAll('.nav-link');
 
-		// Iterar sobre cada enlace
 		navLinks.forEach(link => {
-			// Obtener la ruta asociada al enlace desde el atributo data-path
 			const linkPath = link.getAttribute('data-path');
-
-			// Obtener el elemento del ícono dentro del enlace
 			const icon = link.querySelector('.nav-icon');
 
-			// Si la ruta del enlace coincide con la ruta actual
 			if (linkPath === currentPath) {
-				// Remover el color gris y agregar el color rosa (activo)
 				icon?.classList.remove('bg-gray-800');
 				icon?.classList.add('bg-rose-500');
 			} else {
-				// Si no coincide, mantener el color gris (inactivo)
 				icon?.classList.remove('bg-rose-500');
 				icon?.classList.add('bg-gray-800');
 			}
 		});
 	}
 
-	// Ejecutar la función al cargar la página por primera vez
-	updateActiveNav();
+	function getPaddingY(element) {
+		const styles = getComputedStyle(element);
+		const paddingTop = parseFloat(styles.paddingTop) || 0;
+		const paddingBottom = parseFloat(styles.paddingBottom) || 0;
+		return paddingTop + paddingBottom;
+	}
 
-	// Escuchar el evento 'astro:page-load' que se dispara después de cada transición
-	// Esto asegura que el estado activo se actualice después de navegar
-	document.addEventListener('astro:page-load', updateActiveNav);
+	function computeShouldCenter(main, wrap) {
+		const available = main.clientHeight - getPaddingY(main);
+		const contentHeight = wrap.getBoundingClientRect().height;
+		const delta = available - contentHeight;
+		const enterThreshold = -24;
+		const exitThreshold = -64;
+
+		if (isCentered === null) {
+			return delta >= enterThreshold;
+		}
+
+		if (isCentered) {
+			return delta >= exitThreshold;
+		}
+
+		return delta >= enterThreshold;
+	}
+
+	function updateCentering() {
+		const main = document.querySelector('main');
+		const wrap = document.querySelector('[data-page-wrap]');
+
+		if (!main || !wrap) return;
+
+		const shouldCenter = computeShouldCenter(main, wrap);
+
+		if (shouldCenter === isCentered) return;
+
+		main.classList.toggle('is-centered', shouldCenter);
+		isCentered = shouldCenter;
+	}
+
+	function initCentering() {
+		const wrap = document.querySelector('[data-page-wrap]');
+
+		if (!wrap) return;
+
+		if (centerObserver) {
+			centerObserver.disconnect();
+		}
+
+		centerObserver = new ResizeObserver(() => {
+			requestAnimationFrame(updateCentering);
+		});
+		centerObserver.observe(wrap);
+		updateCentering();
+	}
+
+	function handlePageLoad() {
+		isCentered = null;
+		updateActiveNav();
+		initCentering();
+		requestAnimationFrame(updateCentering);
+		setTimeout(updateCentering, 120);
+	}
+
+	handlePageLoad();
+	document.addEventListener('astro:page-load', handlePageLoad);
+	window.addEventListener('resize', updateCentering);
 </script>
 
 <style>
@@ -176,4 +200,23 @@ import logo from '../assets/fipe-simbolo.webp';
 		width: 100%;
 		height: 100%;
 	}
+
+	main.is-centered {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		overflow-y: hidden;
+	}
+
+	main.is-centered > [data-page-wrap] {
+		width: 100%;
+	}
+
+	main {
+		scrollbar-gutter: stable;
+	}
 </style>
+
+
+
+
