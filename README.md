@@ -1,34 +1,35 @@
+﻿# fipe-cv
 # Astro Starter Kit: Basics
 
 ```sh
 npm create astro@latest -- --template basics
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> ðŸ§‘â€ðŸš€ **Seasoned astronaut?** Delete this file. Have fun!
 
-## 🚀 Project Structure
+## ðŸš€ Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+â”œâ”€â”€ public/
+â”‚   â””â”€â”€ favicon.svg
+â”œâ”€â”€ src
+â”‚Â Â  â”œâ”€â”€ assets
+â”‚Â Â  â”‚Â Â  â””â”€â”€ astro.svg
+â”‚Â Â  â”œâ”€â”€ components
+â”‚Â Â  â”‚Â Â  â””â”€â”€ Welcome.astro
+â”‚Â Â  â”œâ”€â”€ layouts
+â”‚Â Â  â”‚Â Â  â””â”€â”€ Layout.astro
+â”‚Â Â  â””â”€â”€ pages
+â”‚Â Â      â””â”€â”€ index.astro
+â””â”€â”€ package.json
 ```
 
 To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-## 🧞 Commands
+## ðŸ§ž Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -41,6 +42,7 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## ðŸ‘€ Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+

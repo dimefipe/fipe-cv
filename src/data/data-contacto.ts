@@ -1,13 +1,14 @@
 ﻿/**
- * Archivo TypeScript con tipos definidos para datos de contacto
- * Demuestra el uso de interfaces y tipado fuerte
+ * Datos de contacto en TypeScript para mostrar tipado y autocompletado.
  */
 
-// Definir interfaces para tipar los datos
 export interface Contacto {
   titulo: string;
-  emoji: string;
+  kicker: string;
+  descripcion: string;
   informacion: InformacionContacto;
+  campos: CampoContacto[];
+  disponibilidad: DisponibilidadContacto;
 }
 
 export interface InformacionContacto {
@@ -20,10 +21,25 @@ export interface InformacionContacto {
   disponibilidad: string;
 }
 
-// Exportar los datos tipados
+export interface CampoContacto {
+  key: keyof InformacionContacto;
+  titulo: string;
+  icono: string;
+  tipo: 'texto' | 'email' | 'tel' | 'enlace';
+  label?: string;
+}
+
+export interface DisponibilidadContacto {
+  titulo: string;
+  ctaLabel: string;
+  ctaIcon: string;
+}
+
 export const contacto: Contacto = {
-  titulo: "CONTACTO",
-  emoji: "ðŸ“§",
+  titulo: "Contacto",
+  kicker: "Canales directos",
+  descripcion:
+    "Puedes contactarme por los canales disponibles o revisar mis perfiles. Respondo en el menor tiempo posible.",
   informacion: {
     nombre: "Felipe Belmar",
     email: "felipe.contactame@gmail.com",
@@ -31,12 +47,53 @@ export const contacto: Contacto = {
     ubicacion: "Temuco, Chile",
     linkedin: "https://www.linkedin.com/in/felipe-belmar/",
     github: "https://github.com/dimefipe",
-    disponibilidad: "Disponible para oportunidades remotas o hÃ­bridas"
-  }
+    disponibilidad: "Disponible para oportunidades remotas o híbridas",
+  },
+  campos: [
+    {
+      key: "nombre",
+      titulo: "Nombre",
+      icono: "ri-user-line",
+      tipo: "texto",
+    },
+    {
+      key: "email",
+      titulo: "Email",
+      icono: "ri-mail-line",
+      tipo: "email",
+    },
+    {
+      key: "telefono",
+      titulo: "Teléfono",
+      icono: "ri-phone-line",
+      tipo: "tel",
+    },
+    {
+      key: "ubicacion",
+      titulo: "Ubicación",
+      icono: "ri-map-pin-line",
+      tipo: "texto",
+    },
+    {
+      key: "linkedin",
+      titulo: "LinkedIn",
+      icono: "ri-linkedin-line",
+      tipo: "enlace",
+      label: "Ver perfil",
+    },
+    {
+      key: "github",
+      titulo: "GitHub",
+      icono: "ri-github-line",
+      tipo: "enlace",
+      label: "Ver repositorios",
+    },
+  ],
+  disponibilidad: {
+    titulo: "Disponibilidad",
+    ctaLabel: "Escríbeme",
+    ctaIcon: "ri-send-plane-2-line",
+  },
 };
 
-// Exportar tambiÃ©n como default
 export default contacto;
-
-
-

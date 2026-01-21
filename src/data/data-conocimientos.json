@@ -1,30 +1,55 @@
-{
-  "titulo": "CONOCIMIENTOS GENERALES",
-  "emoji": "🛠️",
-  "secciones": [
-    {
-      "nombre": "Tecnologías Web",
-      "items": [
-        "HTML5",
-        "CSS3",
-        "JavaScript (nociones generales)"
+﻿{
+  "technical": {
+    "icon": "ri-stack-line",
+    "title": "Habilidades técnicas",
+    "intro": "Identifico las tecnologías que domino y las que estoy estudiando, sin porcentajes. El foco está en la claridad del stack que manejo hoy y el que estoy consolidando.",
+    "base": {
+      "label": "Dominio actual",
+      "tag": "Base",
+      "skills": [
+        { "label": "HTML", "icon": "ri-html5-line" },
+        { "label": "CSS", "icon": "ri-css3-line" },
+        { "label": "JavaScript", "icon": "ri-javascript-line" },
+        { "label": "Figma", "icon": "ri-figma-line" },
+        { "label": "Git", "icon": "ri-git-branch-line" }
       ]
     },
-    {
-      "nombre": "Conceptos",
-      "items": [
-        "Estructura básica de interfaces web",
-        "Separación entre contenido, estilos y comportamiento",
-        "Maquetación responsive básica",
-        "Comprensión general del flujo de una aplicación web"
-      ]
-    },
-    {
-      "nombre": "Herramientas",
-      "items": [
-        "Git (uso inicial)",
-        "Entornos de desarrollo locales"
+    "learning": {
+      "label": "En estudio",
+      "tag": "En progreso",
+      "skills": [
+        { "label": "Vue", "icon": "ri-vuejs-line" },
+        { "label": "Tailwind", "icon": "ri-tailwind-css-line" },
+        { "label": "Astro", "icon": "ri-planet-line" },
+        { "label": "Laravel", "icon": "ri-leaf-line" }
       ]
     }
-  ]
+  },
+  "general": {
+    "icon": "ri-compass-3-line",
+    "title": "Conocimientos generales",
+    "intro": "Además de los proyectos, mantengo un enfoque consistente en calidad de maquetado, orden visual y colaboración con equipos de producto y desarrollo.",
+    "items": [
+      {
+        "title": "Maquetación UI orientada a negocio",
+        "detail": "Transformo requerimientos en interfaces claras y escalables, cuidando jerarquía visual y consistencia.",
+        "icon": "ri-layout-masonry-line"
+      },
+      {
+        "title": "Metodologías de estilo",
+        "detail": "Trabajo con BEM y sistemas de clases para mantener el CSS ordenado y fácil de mantener.",
+        "icon": "ri-palette-line"
+      },
+      {
+        "title": "Responsive y accesibilidad básica",
+        "detail": "Diseños preparados para mobile-first, con foco en legibilidad y navegación fluida.",
+        "icon": "ri-device-line"
+      },
+      {
+        "title": "Interacción con JavaScript",
+        "detail": "Aplico JS para microinteracciones, estados visibles y mejoras de experiencia.",
+        "icon": "ri-code-s-slash-line"
+      }
+    ]
+  }
 }

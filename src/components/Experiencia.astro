@@ -1,15 +1,24 @@
 ﻿---
+/**
+ * Experiencia desde Markdown para demostrar frontmatter.
+ * ARCHIVO DE DATOS: src/data/data-experiencia.md
+ */
 const experienciaData = await import('../data/data-experiencia.md');
 
-const { trabajos, interesProfesional, idiomas, cierre, titulo } = experienciaData.frontmatter;
-const tituloBase = typeof titulo === 'string'
-  ? titulo.replace(/\\s*PROFESIONAL/i, '').trim()
-  : titulo;
+const {
+  trabajos,
+  interesProfesional,
+  idiomas,
+  cierre,
+  titulo,
+  kicker,
+  statsLabel,
+} = experienciaData.frontmatter;
 
 const jobIcons = [
-  "ri-pencil-ruler-2-line",
-  "ri-graduation-cap-line",
-  "ri-wordpress-line",
+  'ri-pencil-ruler-2-line',
+  'ri-graduation-cap-line',
+  'ri-wordpress-line',
 ];
 
 const totalResponsabilidades = trabajos.reduce(
@@ -26,13 +35,13 @@ const totalResponsabilidades = trabajos.reduce(
       </div>
       <div>
         <p class="text-xs uppercase tracking-[0.3em] text-rose-300/80">
-          Trayectoria
+          {kicker}
         </p>
-        <h1 class="text-4xl sm:text-5xl font-bold">{tituloBase}</h1>
+        <h1 class="text-4xl sm:text-5xl font-bold">{titulo}</h1>
       </div>
     </div>
     <p class="text-slate-300">
-      Total de responsabilidades:
+      {statsLabel}:
       <span class="font-semibold text-rose-300">{totalResponsabilidades}</span>
     </p>
   </header>
@@ -43,7 +52,7 @@ const totalResponsabilidades = trabajos.reduce(
         <div class="flex flex-wrap items-start justify-between gap-4">
           <div class="flex items-start gap-4">
             <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-rose-500/15 text-rose-200">
-              <i class={jobIcons[index] ?? "ri-briefcase-line"}></i>
+              <i class={jobIcons[index] ?? 'ri-briefcase-line'}></i>
             </div>
             <div>
               <h2 class="text-2xl font-semibold">{trabajo.cargo}</h2>
