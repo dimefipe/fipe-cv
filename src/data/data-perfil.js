@@ -3,7 +3,7 @@
  * Útil para mostrar cómo importar y reutilizar data en Astro.
  */
 
-const perfilImagen = new URL('../assets/fipe.jpg', import.meta.url).href;
+import perfilImagen from '../assets/fipe.jpg';
 
 export const perfilProfesional = {
   titulo: "Perfil profesional",

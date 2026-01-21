@@ -3,9 +3,9 @@
  * Este archivo usa JavaScript para mostrar cómo exportar objetos y arrays.
  */
 
-const reservaImage = new URL('../assets/reserva.webp', import.meta.url).href;
-const ticsurImage = new URL('../assets/ticsur.webp', import.meta.url).href;
-const mieunacomImage = new URL('../assets/mieunacom.webp', import.meta.url).href;
+import reservaImage from '../assets/reserva.webp';
+import ticsurImage from '../assets/ticsur.webp';
+import mieunacomImage from '../assets/mieunacom.webp';
 
 export const proyectosSection = {
   kicker: "Conocimientos aplicados",
