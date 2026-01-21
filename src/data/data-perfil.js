@@ -5,13 +5,16 @@
 
 import perfilImagen from '../assets/fipe.jpg';
 
+const perfilImagenUrl =
+  typeof perfilImagen === 'string' ? perfilImagen : perfilImagen.src;
+
 export const perfilProfesional = {
   titulo: "Perfil profesional",
   nombre: "Felipe Belmar",
   etiquetas: ["Desarrollador en formación"],
   descripcion:
     "Desarrollador web en formación con conocimientos fundamentales en HTML, CSS y JavaScript. Apasionado por aprender y aplicar nuevas tecnologías. Busco mi primera oportunidad profesional para crecer en el desarrollo web mientras contribuyo con dedicación y ganas de aprender.",
-  imagen: perfilImagen,
+  imagen: perfilImagenUrl,
   imagenAlt: "Felipe Belmar",
   badge: "UI / Web",
   cta: {
